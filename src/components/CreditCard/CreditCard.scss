@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@500&display=swap");
+
+.CreditCard {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: -151px;
+  left: 50%;
+  transform: translateX(-240px);
+  z-index: 2;
+  color: white;
+  font-family: "Source Code Pro", monospace;
+
+  .ui.card {
+    height: 302px;
+    width: 480px;
+    border-radius: 20px;
+    background: url("../../img/background.jpg");
+    box-shadow: none;
+    position: relative;
+
+    .ccType {
+      width: 120px;
+      position: absolute;
+      right: 35px;
+      top: 35px;
+    }
+
+    .chip {
+      width: 70px;
+      position: absolute;
+      left: 35px;
+      top: 80px;
+    }
+
+    .ccNumber {
+      display: flex;
+      justify-content: space-evenly;
+      width: 100%;
+      position: absolute;
+      top: 165px;
+      font-size: 30px;
+    }
+
+    .name-date {
+      margin: 210px 40px 0 40px;
+      display: flex;
+      justify-content: space-between;
+
+      .cardHolder {
+        .holderTitle {
+          font-size: 16px;
+          color: lightgray;
+          margin-bottom: 8px;
+        }
+        .holderName {
+          font-size: 22px;
+        }
+      }
+
+      .expirationDate {
+        .expirationTitle {
+          font-size: 16px;
+          color: lightgray;
+          margin-bottom: 8px;
+        }
+
+        .slash {
+          margin: 0 5px;
+        }
+
+        .date {
+          display: flex;
+          font-size: 22px;
+        }
+      }
+    }
+  }
+}

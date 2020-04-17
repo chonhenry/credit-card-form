@@ -12,7 +12,7 @@ class CreditCardForm extends Component {
             <div className="field">
               <label>Card Number</label>
               <div class="field">
-                <input type="text" name="ccNumber" />
+                <input type="number" maxlength="16" name="ccNumber" />
               </div>
             </div>
 
@@ -35,23 +35,23 @@ class CreditCardForm extends Component {
                       <option value="" disabled selected>
                         Month
                       </option>
-                      <option value="1">January</option>
-                      <option value="2">February</option>
-                      <option value="3">March</option>
-                      <option value="4">April</option>
-                      <option value="5">May</option>
-                      <option value="6">June</option>
-                      <option value="7">July</option>
-                      <option value="8">August</option>
-                      <option value="9">September</option>
-                      <option value="10">October</option>
-                      <option value="11">November</option>
-                      <option value="12">December</option>
+                      <option value="1">01</option>
+                      <option value="2">02</option>
+                      <option value="3">03</option>
+                      <option value="4">04</option>
+                      <option value="5">05</option>
+                      <option value="6">06</option>
+                      <option value="7">07</option>
+                      <option value="8">08</option>
+                      <option value="9">09</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
                     </select>
                   </div>
                   <div class="field">
                     <input
-                      type="text"
+                      type="number"
                       name="card[expire-year]"
                       maxlength="4"
                       placeholder="Year"
