@@ -1,0 +1,19 @@
+.CreditCardForm {
+  position: relative;
+}
+
+.container.segment {
+  border-radius: 10px;
+}
+
+form {
+  margin-top: 180px;
+}
+
+input {
+  height: 45px;
+}
+
+select.ui.dropdown {
+  height: 45px;
+}
