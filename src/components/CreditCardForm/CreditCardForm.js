@@ -11,14 +11,19 @@ class CreditCardForm extends Component {
           <form className="ui form">
             <div className="field">
               <label>Card Number</label>
-              <div class="field">
-                <input type="number" maxlength="16" name="ccNumber" />
+              <div className="field">
+                <input
+                  onChange={this.props.onCreditCardNumChange}
+                  type="number"
+                  maxLength="16"
+                  name="ccNumber"
+                />
               </div>
             </div>
 
             <div className="field">
               <label>Card Holders</label>
-              <div class="field">
+              <div className="field">
                 <input type="text" name="holderName" />
               </div>
             </div>
@@ -29,10 +34,10 @@ class CreditCardForm extends Component {
                 <div className="two fields">
                   <div className="field">
                     <select
-                      class="ui fluid search dropdown"
+                      className="ui fluid search dropdown"
                       name="card[expire-month]"
                     >
-                      <option value="" disabled selected>
+                      <option value="" disabled>
                         Month
                       </option>
                       <option value="1">01</option>
@@ -49,11 +54,12 @@ class CreditCardForm extends Component {
                       <option value="12">12</option>
                     </select>
                   </div>
-                  <div class="field">
+                  <div className="field">
                     <input
+                      onChange={this.props.onYearChange}
                       type="number"
                       name="card[expire-year]"
-                      maxlength="4"
+                      maxLength="4"
                       placeholder="Year"
                     />
                   </div>
@@ -61,10 +67,14 @@ class CreditCardForm extends Component {
               </div>
               <div className="four wide field">
                 <label className="">CVV</label>
-                <input type="number" name="cvv"></input>
+                <input
+                  onChange={this.props.onCvvChange}
+                  type="number"
+                  name="cvv"
+                ></input>
               </div>
             </div>
-            <button className="fluid blue ui button" tabindex="0">
+            <button className="fluid blue ui button" tabIndex="0">
               Submit
             </button>
           </form>

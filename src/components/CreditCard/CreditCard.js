@@ -7,6 +7,9 @@ import amex from "../../img/amex.png";
 import chip from "../../img/chip.png";
 
 class CreditCard extends Component {
+  // componentDidMount() {
+  //   console.log("CreditCard mounted");
+  // }
   render() {
     return (
       <div className="CreditCard">
