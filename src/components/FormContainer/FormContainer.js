@@ -3,7 +3,7 @@ import "./FormContainer.css";
 import CreditCardForm from "../CreditCardForm/CreditCardForm";
 
 class FormContainer extends Component {
-  state = { type: "", cvv: null, creditCardNum: null, year: null };
+  state = { type: "", cvv: null, creditCardNum: null, year: null, day: null };
   componentDidMount() {
     console.log("FormContainer mounted");
   }
@@ -17,19 +17,28 @@ class FormContainer extends Component {
   };
 
   onCreditCardNumChange = (e) => {
-    // if (e.target.value.length > 16) {
-    //   e.target.value = e.target.value.slice(0, 16);
-    // }
-
-    // if (e.target.value.length <= 16) {
-    if (e.target.value.slice(-1) !== "2") {
-      this.setState({ creditCardNum: e.target.value }, () =>
-        console.log(this.state.creditCardNum)
+    if (e.target.value.slice(-1) >= "0" && e.target.value.slice(-1) <= "9") {
+      this.setState(
+        { creditCardNum: e.target.value.split("  ").join("") },
+        () => {
+          console.log(this.state.creditCardNum);
+        }
       );
+
+      if (this.state.creditCardNum !== null) {
+        if (this.state.creditCardNum.toString().length % 4 === 0) {
+          e.target.value =
+            e.target.value.slice(0, e.target.value.length - 1) +
+            "  " +
+            e.target.value.slice(-1);
+        }
+      }
     } else {
-      // e.target.value = this.state.creditCardNum;
-      // console.log(this.state.creditCardNum);
-      e.target.value = this.state.creditCardNum;
+      if (e.target.value === "") {
+        e.target.value = "";
+      } else {
+        e.target.value = this.state.creditCardNum;
+      }
     }
   };
 

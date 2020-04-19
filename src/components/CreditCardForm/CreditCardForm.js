@@ -14,8 +14,8 @@ class CreditCardForm extends Component {
               <div className="field">
                 <input
                   onChange={this.props.onCreditCardNumChange}
-                  type="number"
-                  maxLength="16"
+                  type="text"
+                  maxLength="22"
                   name="ccNumber"
                 />
               </div>
