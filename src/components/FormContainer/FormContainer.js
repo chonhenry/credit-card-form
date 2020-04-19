@@ -17,20 +17,23 @@ class FormContainer extends Component {
   };
 
   onCreditCardNumChange = (e) => {
-    if (e.target.value.slice(-1) >= "0" && e.target.value.slice(-1) <= "9") {
-      this.setState(
-        { creditCardNum: e.target.value.split("  ").join("") },
-        () => {
-          console.log(this.state.creditCardNum);
-        }
-      );
+    console.log(e.target.value.slice(-1));
+
+    if (
+      (e.target.value.slice(-1) >= "0" && e.target.value.slice(-1) <= "9") ||
+      (e.target.value.slice(-1) === " " &&
+        this.state.creditCardNum.length !== 0)
+    ) {
+      this.setState({ creditCardNum: e.target.value.split("  ").join("") });
 
       if (this.state.creditCardNum !== null) {
-        if (this.state.creditCardNum.toString().length % 4 === 0) {
-          e.target.value =
-            e.target.value.slice(0, e.target.value.length - 1) +
-            "  " +
-            e.target.value.slice(-1);
+        // if (this.state.creditCardNum.toString().length % 4 === 0) {
+        if (
+          e.target.value.split(" ").join("").length % 4 === 0 &&
+          e.target.value.split(" ").join("").length < 16
+        ) {
+          e.target.value = e.target.value + " ";
+          console.log(4);
         }
       }
     } else {
