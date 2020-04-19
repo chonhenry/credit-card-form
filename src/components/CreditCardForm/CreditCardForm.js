@@ -6,7 +6,6 @@ class CreditCardForm extends Component {
   render() {
     return (
       <div className="CreditCardForm">
-        <CreditCard></CreditCard>
         <div className="ui raised padded text container segment">
           <form className="ui form">
             <div className="field">
@@ -28,7 +27,7 @@ class CreditCardForm extends Component {
               </div>
             </div>
 
-            <div className="fields">11
+            <div className="fields">
               <div className="twelve wide field">
                 <label className="">Expiration Date</label>
                 <div className="two fields">
@@ -74,7 +73,11 @@ class CreditCardForm extends Component {
                 ></input>
               </div>
             </div>
-            <button className="fluid blue ui button" tabIndex="0">
+            <button
+              onClick={this.props.onSubmit}
+              className="fluid blue ui button"
+              tabIndex="0"
+            >
               Submit
             </button>
           </form>
