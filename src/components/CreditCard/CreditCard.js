@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "./CreditCard.scss";
 import visa from "../../img/visa.png";
 import master from "../../img/mastercard.png";
