@@ -23,7 +23,11 @@ class CreditCardForm extends Component {
             <div className="field">
               <label>Card Holders</label>
               <div className="field">
-                <input type="text" name="holderName" />
+                <input
+                  onChange={this.props.onNameChange}
+                  type="text"
+                  name="holderName"
+                />
               </div>
             </div>
 

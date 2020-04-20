@@ -5,7 +5,14 @@ import CreditCardForm from "./CreditCardForm/CreditCardForm";
 import { CreditCard } from "./CreditCard/CreditCard";
 
 class App extends Component {
-  state = { type: "", cvv: null, creditCardNum: null, year: null, month: null };
+  state = {
+    type: "",
+    cvv: null,
+    creditCardNum: null,
+    year: null,
+    month: null,
+    name: "",
+  };
   componentDidMount() {
     console.log("FormContainer mounted");
   }
@@ -61,6 +68,10 @@ class App extends Component {
     this.setState({ month: e.target.value });
   };
 
+  onNameChange = (e) => {
+    this.setState({ name: e.target.value });
+  };
+
   render() {
     return (
       <div className="App">
@@ -69,10 +80,12 @@ class App extends Component {
           onCreditCardNumChange={this.onCreditCardNumChange}
           onYearChange={this.onYearChange}
           onMonthChange={this.onMonthChange}
+          onNameChange={this.onNameChange}
         ></CreditCardForm>
         <CreditCard
           year={this.state.year}
           month={this.state.month}
+          name={this.state.name}
         ></CreditCard>
       </div>
     );

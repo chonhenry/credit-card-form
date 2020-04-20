@@ -9,6 +9,7 @@ import chip from "../../img/chip.png";
 export const CreditCard = (props) => {
   let year = "YY";
   let month = "MM";
+  let name = "FULL NAME";
 
   if (props.year !== null) {
     if (props.year.length === 4) {
@@ -20,6 +21,10 @@ export const CreditCard = (props) => {
     if (props.month.length === 2) {
       month = props.month;
     }
+  }
+
+  if (props.name.length > 0) {
+    name = props.name;
   }
 
   return (
@@ -36,7 +41,7 @@ export const CreditCard = (props) => {
         <div className="name-date">
           <div className="cardHolder">
             <div className="holderTitle">Card Holder</div>
-            <div className="holderName">Full Name</div>
+            <div className="holderName">{name}</div>
           </div>
           <div className="expirationDate">
             <div className="expirationTitle">Expires</div>
