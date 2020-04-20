@@ -4,6 +4,11 @@ import FormContainer from "./FormContainer/FormContainer";
 import CreditCardForm from "./CreditCardForm/CreditCardForm";
 import { CreditCard } from "./CreditCard/CreditCard";
 
+// ae 34, 37
+// mc 51, 52, 53, 54, 55
+// visa 4
+// dis 6
+
 class App extends Component {
   state = {
     type: "",
@@ -12,6 +17,7 @@ class App extends Component {
     year: "",
     month: "",
     name: "",
+    creditCardCompany: "",
   };
 
   onCvvChange = (e) => {
@@ -83,6 +89,7 @@ class App extends Component {
           month={this.state.month}
           name={this.state.name}
           ccNum={this.state.creditCardNum}
+          ccCompnay={this.state.creditCardCompany}
         ></CreditCard>
       </div>
     );

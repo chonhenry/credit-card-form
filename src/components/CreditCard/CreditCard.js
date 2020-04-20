@@ -6,30 +6,116 @@ import discover from "../../img/discover.png";
 import amex from "../../img/amex.png";
 import chip from "../../img/chip.png";
 
-export const CreditCard = ({ year, month, name, ccNum }) => {
+export const CreditCard = ({ year, month, name, ccNum, ccCompnay }) => {
+  let logo = "";
+
+  if (ccNum.slice(0, 1) === "4") {
+    logo = visa;
+  } else if (ccNum.slice(0, 1) === "6") {
+    logo = discover;
+  } else if (
+    ccNum.slice(0, 2) === "51" ||
+    ccNum.slice(0, 2) === "52" ||
+    ccNum.slice(0, 2) === "53" ||
+    ccNum.slice(0, 2) === "54" ||
+    ccNum.slice(0, 2) === "55"
+  ) {
+    logo = master;
+  } else if (ccNum.slice(0, 2) === "34" || ccNum.slice(0, 2) === "37") {
+    logo = amex;
+  }
+
+  let numberSection = null;
+
+  if (logo === amex) {
+    numberSection = (
+      <div className="ccNumber">
+        <div className="first-group">
+          {ccNum.length <= 4
+            ? ccNum.slice(0, ccNum.length) + "#".repeat(4 - ccNum.length)
+            : ccNum.slice(0, 4)}
+        </div>
+        <div className="second-group">######</div>
+        <div className="third-group">#####</div>
+      </div>
+    );
+  } else {
+    numberSection = (
+      <div className="ccNumber">
+        <div className="first-group">
+          {ccNum.length <= 4
+            ? ccNum.slice(0, ccNum.length) + "#".repeat(4 - ccNum.length)
+            : ccNum.slice(0, 4)}
+        </div>
+        <div className="second-group">
+          {ccNum.length <= 8 && ccNum.length >= 5
+            ? ccNum.slice(4, ccNum.length) + "#".repeat(8 - ccNum.length)
+            : ccNum.length <= 4
+            ? "####"
+            : ccNum.slice(4, 8)}
+        </div>
+        <div className="thirg-group">
+          {ccNum.length <= 12 && ccNum.length >= 9
+            ? ccNum.slice(8, ccNum.length) + "#".repeat(12 - ccNum.length)
+            : ccNum.length <= 8
+            ? "####"
+            : ccNum.slice(8, 12)}
+        </div>
+        <div className="fourth-group">
+          {ccNum.length >= 13
+            ? ccNum.slice(12, ccNum.length) + "#".repeat(16 - ccNum.length)
+            : "####"}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="CreditCard">
       <div className="ui card">
-        <img className="ccType" src={amex}></img>
+        {/* <img className="ccType" src={logo}></img> */}
+        <img
+          className={`ccType ${
+            logo === visa
+              ? "visa"
+              : logo === master
+              ? "master"
+              : logo === amex
+              ? "amex"
+              : logo === discover
+              ? "discover"
+              : ""
+          }`}
+          src={logo}
+        ></img>
         <img className="chip" src={chip}></img>
-        <div className="ccNumber">
+        {numberSection}
+        {/* <div className="ccNumber">
           <div className="first-four">
-            {/* {ccNum.length >= 4 ? ccNum.slice(0, 4) : "####"} */}
-            {/* {ccNum.slice(0, ccNum.length) + "#".repeat(4 - ccNum.length)} */}
             {ccNum.length <= 4
               ? ccNum.slice(0, ccNum.length) + "#".repeat(4 - ccNum.length)
               : ccNum.slice(0, 4)}
           </div>
           <div className="first-four">
-            {ccNum.length >= 8 ? ccNum.slice(4, 8) : "####"}
+            {ccNum.length <= 8 && ccNum.length >= 5
+              ? ccNum.slice(4, ccNum.length) + "#".repeat(8 - ccNum.length)
+              : ccNum.length <= 4
+              ? "####"
+              : ccNum.slice(4, 8)}
           </div>
           <div className="first-four">
-            {ccNum.length >= 12 ? ccNum.slice(8, 12) : "####"}
+            {ccNum.length <= 12 && ccNum.length >= 9
+              ? ccNum.slice(8, ccNum.length) + "#".repeat(12 - ccNum.length)
+              : ccNum.length <= 8
+              ? "####"
+              : ccNum.slice(8, 12)}
           </div>
           <div className="first-four">
-            {ccNum.length >= 16 ? ccNum.slice(12, 16) : "####"}
+            {ccNum.length >= 13
+              ? ccNum.slice(12, ccNum.length) + "#".repeat(16 - ccNum.length)
+              : "####"}
           </div>
-        </div>
+        </div> */}
         <div className="name-date">
           <div className="cardHolder">
             <div className="holderTitle">Card Holder</div>

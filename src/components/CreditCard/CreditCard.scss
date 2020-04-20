@@ -21,10 +21,25 @@
     position: relative;
 
     .ccType {
-      width: 120px;
       position: absolute;
       right: 35px;
       top: 35px;
+    }
+
+    .master {
+      width: 100px;
+    }
+
+    .visa {
+      width: 120px;
+    }
+
+    .amex {
+      width: 150px;
+    }
+
+    .discover {
+      width: 170px;
     }
 
     .chip {
