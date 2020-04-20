@@ -7,19 +7,16 @@ import { CreditCard } from "./CreditCard/CreditCard";
 class App extends Component {
   state = {
     type: "",
-    cvv: null,
-    creditCardNum: null,
-    year: null,
-    month: null,
+    cvv: "",
+    creditCardNum: "",
+    year: "",
+    month: "",
     name: "",
   };
-  componentDidMount() {
-    console.log("FormContainer mounted");
-  }
 
   onCvvChange = (e) => {
     if (e.target.value.length <= 3) {
-      this.setState({ cvv: e.target.value }, () => console.log(this.state.cvv));
+      this.setState({ cvv: e.target.value });
     } else {
       e.target.value = this.state.cvv;
     }
@@ -29,7 +26,8 @@ class App extends Component {
     if (
       (e.target.value.slice(-1) >= "0" && e.target.value.slice(-1) <= "9") ||
       (e.target.value.slice(-1) === " " &&
-        this.state.creditCardNum.length !== 0)
+        this.state.creditCardNum.length !== 0) ||
+      e.target.value === ""
     ) {
       this.setState({ creditCardNum: e.target.value.split(" ").join("") });
 
@@ -56,9 +54,7 @@ class App extends Component {
 
   onYearChange = (e) => {
     if (e.target.value.length <= 4) {
-      this.setState({ year: e.target.value }, () =>
-        console.log(this.state.year)
-      );
+      this.setState({ year: e.target.value });
     } else {
       e.target.value = this.state.year;
     }
@@ -86,6 +82,7 @@ class App extends Component {
           year={this.state.year}
           month={this.state.month}
           name={this.state.name}
+          ccNum={this.state.creditCardNum}
         ></CreditCard>
       </div>
     );

@@ -21,7 +21,7 @@ class CreditCardForm extends Component {
             </div>
 
             <div className="field">
-              <label>Card Holders</label>
+              <label>Card Holder</label>
               <div className="field">
                 <input
                   onChange={this.props.onNameChange}
