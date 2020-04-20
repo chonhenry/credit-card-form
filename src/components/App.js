@@ -17,7 +17,7 @@ class App extends Component {
     year: "",
     month: "",
     name: "",
-    creditCardCompany: "",
+    type: "",
   };
 
   onCvvChange = (e) => {
@@ -28,33 +28,66 @@ class App extends Component {
     }
   };
 
-  onCreditCardNumChange = (e) => {
-    if (
-      (e.target.value.slice(-1) >= "0" && e.target.value.slice(-1) <= "9") ||
-      (e.target.value.slice(-1) === " " &&
-        this.state.creditCardNum.length !== 0) ||
-      e.target.value === ""
-    ) {
-      this.setState({ creditCardNum: e.target.value.split(" ").join("") });
+  // onCreditCardNumChange = (e) => {
+  //   if (
+  //     (e.target.value.slice(-1) >= "0" && e.target.value.slice(-1) <= "9") ||
+  //     (e.target.value.slice(-1) === " " &&
+  //       this.state.creditCardNum.length !== 0) ||
+  //     e.target.value === ""
+  //   ) {
+  //     this.setState({ creditCardNum: e.target.value.split(" ").join("") });
 
-      if (this.state.creditCardNum !== null) {
-        if (
-          e.target.value.split(" ").join("").length % 4 === 0 &&
-          e.target.value.split(" ").join("").length < 16
-        ) {
-          if (e.target.value.slice(-1) === " ") {
-            e.target.value = e.target.value.slice(0, e.target.value.length - 1);
-          } else {
-            e.target.value = e.target.value + " ";
-          }
-        }
-      }
+  //     if (this.state.creditCardNum !== null) {
+  //       if (
+  //         e.target.value.split(" ").join("").length % 4 === 0 &&
+  //         e.target.value.split(" ").join("").length < 16
+  //       ) {
+  //         if (e.target.value.slice(-1) === " ") {
+  //           e.target.value = e.target.value.slice(0, e.target.value.length - 1);
+  //         } else {
+  //           e.target.value = e.target.value + " ";
+  //         }
+  //       }
+  //     }
+  //   } else {
+  //     if (e.target.value === "") {
+  //       e.target.value = "";
+  //     } else {
+  //       e.target.value = this.state.creditCardNum;
+  //     }
+  //   }
+  // };
+
+  onCreditCardNumChange = (e) => {
+    if (e.target.value.slice(-1) >= "0" && e.target.value.slice(-1) <= "9") {
+      this.setState({ creditCardNum: e.target.value });
     } else {
       if (e.target.value === "") {
         e.target.value = "";
+        this.setState({ creditCardNum: "", type: "" });
       } else {
         e.target.value = this.state.creditCardNum;
       }
+    }
+
+    // check type
+    if (e.target.value.slice(0, 1) === "4") {
+      this.setState({ type: "visa" });
+    } else if (e.target.value.slice(0, 1) === "6") {
+      this.setState({ type: "discover" });
+    } else if (
+      e.target.value.slice(0, 2) === "51" ||
+      e.target.value.slice(0, 2) === "52" ||
+      e.target.value.slice(0, 2) === "53" ||
+      e.target.value.slice(0, 2) === "54" ||
+      e.target.value.slice(0, 2) === "55"
+    ) {
+      this.setState({ type: "master" });
+    } else if (
+      e.target.value.slice(0, 2) === "34" ||
+      e.target.value.slice(0, 2) === "37"
+    ) {
+      this.setState({ type: "amex" });
     }
   };
 
@@ -83,13 +116,14 @@ class App extends Component {
           onYearChange={this.onYearChange}
           onMonthChange={this.onMonthChange}
           onNameChange={this.onNameChange}
+          numDigit={this.state.type === "amex" ? 15 : 16}
         ></CreditCardForm>
         <CreditCard
           year={this.state.year}
           month={this.state.month}
           name={this.state.name}
           ccNum={this.state.creditCardNum}
-          ccCompnay={this.state.creditCardCompany}
+          type={this.state.type}
         ></CreditCard>
       </div>
     );

@@ -6,28 +6,22 @@ import discover from "../../img/discover.png";
 import amex from "../../img/amex.png";
 import chip from "../../img/chip.png";
 
-export const CreditCard = ({ year, month, name, ccNum, ccCompnay }) => {
-  let logo = "";
+export const CreditCard = ({ year, month, name, ccNum, type }) => {
+  let ccType = "";
 
-  if (ccNum.slice(0, 1) === "4") {
-    logo = visa;
-  } else if (ccNum.slice(0, 1) === "6") {
-    logo = discover;
-  } else if (
-    ccNum.slice(0, 2) === "51" ||
-    ccNum.slice(0, 2) === "52" ||
-    ccNum.slice(0, 2) === "53" ||
-    ccNum.slice(0, 2) === "54" ||
-    ccNum.slice(0, 2) === "55"
-  ) {
-    logo = master;
-  } else if (ccNum.slice(0, 2) === "34" || ccNum.slice(0, 2) === "37") {
-    logo = amex;
+  if (type === "visa") {
+    ccType = visa;
+  } else if (type === "discover") {
+    ccType = discover;
+  } else if (type === "master") {
+    ccType = master;
+  } else if (type === "amex") {
+    ccType = amex;
   }
 
   let numberSection = null;
 
-  if (logo === amex) {
+  if (ccType === amex) {
     numberSection = (
       <div className="ccNumber">
         <div className="first-group">
@@ -35,8 +29,18 @@ export const CreditCard = ({ year, month, name, ccNum, ccCompnay }) => {
             ? ccNum.slice(0, ccNum.length) + "#".repeat(4 - ccNum.length)
             : ccNum.slice(0, 4)}
         </div>
-        <div className="second-group">######</div>
-        <div className="third-group">#####</div>
+        <div className="second-group">
+          {ccNum.length <= 10 && ccNum.length >= 5
+            ? ccNum.slice(4, ccNum.length) + "#".repeat(10 - ccNum.length)
+            : ccNum.length <= 4
+            ? "######"
+            : ccNum.slice(4, 10)}
+        </div>
+        <div className="third-group">
+          {ccNum.length >= 11
+            ? ccNum.slice(10, ccNum.length) + "#".repeat(15 - ccNum.length)
+            : "#####"}
+        </div>
       </div>
     );
   } else {
@@ -73,20 +77,19 @@ export const CreditCard = ({ year, month, name, ccNum, ccCompnay }) => {
   return (
     <div className="CreditCard">
       <div className="ui card">
-        {/* <img className="ccType" src={logo}></img> */}
         <img
           className={`ccType ${
-            logo === visa
+            ccType === visa
               ? "visa"
-              : logo === master
+              : ccType === master
               ? "master"
-              : logo === amex
+              : ccType === amex
               ? "amex"
-              : logo === discover
+              : ccType === discover
               ? "discover"
               : ""
           }`}
-          src={logo}
+          src={ccType}
         ></img>
         <img className="chip" src={chip}></img>
         {numberSection}
