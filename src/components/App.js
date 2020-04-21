@@ -3,6 +3,7 @@ import "./App.css";
 import FormContainer from "./FormContainer/FormContainer";
 import CreditCardForm from "./CreditCardForm/CreditCardForm";
 import { CreditCard } from "./CreditCard/CreditCard";
+import { CreditCardBack } from "./CreditCardBack/CreditCardBack";
 
 // ae 34, 37
 // mc 51, 52, 53, 54, 55
@@ -125,6 +126,7 @@ class App extends Component {
           ccNum={this.state.creditCardNum}
           type={this.state.type}
         ></CreditCard>
+        <CreditCardBack type={this.state.type}></CreditCardBack>
       </div>
     );
   }
