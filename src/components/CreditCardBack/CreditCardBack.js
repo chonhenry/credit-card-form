@@ -5,7 +5,7 @@ import master from "../../img/mastercard.png";
 import discover from "../../img/discover.png";
 import amex from "../../img/amex.png";
 
-export const CreditCardBack = ({ type }) => {
+export const CreditCardBack = ({ type, side }) => {
   let ccType = "";
 
   if (type === "visa") {
@@ -19,11 +19,13 @@ export const CreditCardBack = ({ type }) => {
   }
 
   return (
-    <div className="CreditCardBack">
+    <div className={`CreditCardBack ${side}`}>
       <div className="ui card">
         <div className="blackspace"></div>
         <div className="cvv">cvv</div>
-        <div className="whitespace"></div>
+        <div className="whitespace">
+          <div>111</div>
+        </div>
         <img
           className={`ccType ${
             ccType === visa

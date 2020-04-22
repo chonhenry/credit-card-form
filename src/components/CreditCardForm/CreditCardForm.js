@@ -13,6 +13,7 @@ class CreditCardForm extends Component {
               <div className="field">
                 <input
                   onChange={this.props.onCreditCardNumChange}
+                  onClick={this.props.onFormClick}
                   type="text"
                   maxLength={this.props.numDigit}
                   name="ccNumber"
@@ -25,6 +26,7 @@ class CreditCardForm extends Component {
               <div className="field">
                 <input
                   onChange={this.props.onNameChange}
+                  onClick={this.props.onFormClick}
                   type="text"
                   name="holderName"
                 />
@@ -40,6 +42,7 @@ class CreditCardForm extends Component {
                       className="ui fluid search dropdown"
                       name="card[expire-month]"
                       onChange={this.props.onMonthChange}
+                      onClick={this.props.onFormClick}
                     >
                       <option value="" disabled>
                         Month
@@ -61,6 +64,7 @@ class CreditCardForm extends Component {
                   <div className="field">
                     <input
                       onChange={this.props.onYearChange}
+                      onClick={this.props.onFormClick}
                       type="number"
                       name="card[expire-year]"
                       maxLength="4"
@@ -73,7 +77,7 @@ class CreditCardForm extends Component {
                 <label className="">CVV</label>
                 <input
                   onChange={this.props.onCvvChange}
-                  onClick={this.props.flip}
+                  onClick={this.props.onCvvClick}
                   type="number"
                   name="cvv"
                 ></input>

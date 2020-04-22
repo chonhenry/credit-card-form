@@ -109,8 +109,16 @@ class App extends Component {
     this.setState({ name: e.target.value });
   };
 
-  flip = () => {
-    
+  onCvvClick = () => {
+    this.setState({ side: "back" }, () => {
+      console.log(this.state.side);
+    });
+  };
+
+  onFormClick = () => {
+    this.setState({ side: "front" }, () => {
+      console.log(this.state.side);
+    });
   };
 
   render() {
@@ -123,7 +131,8 @@ class App extends Component {
           onMonthChange={this.onMonthChange}
           onNameChange={this.onNameChange}
           numDigit={this.state.type === "amex" ? 15 : 16}
-          flip={this.flip}
+          onCvvClick={this.state.side === "front" ? this.onCvvClick : null}
+          onFormClick={this.state.side === "back" ? this.onFormClick : null}
         ></CreditCardForm>
         <CreditCard
           year={this.state.year}
@@ -131,8 +140,12 @@ class App extends Component {
           name={this.state.name}
           ccNum={this.state.creditCardNum}
           type={this.state.type}
+          side={this.state.side}
         ></CreditCard>
-        <CreditCardBack type={this.state.type}></CreditCardBack>
+        <CreditCardBack
+          type={this.state.type}
+          side={this.state.side}
+        ></CreditCardBack>
       </div>
     );
   }
