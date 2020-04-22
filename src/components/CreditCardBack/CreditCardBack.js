@@ -24,7 +24,6 @@ export const CreditCardBack = ({ type }) => {
         <div className="blackspace"></div>
         <div className="cvv">cvv</div>
         <div className="whitespace"></div>
-        {/* <img className="" src={ccType}></img> */}
         <img
           className={`ccType ${
             ccType === visa

@@ -19,6 +19,7 @@
     background: url("../../img/background.jpg");
     box-shadow: none;
     position: relative;
+    visibility: hidden;
 
     .blackspace {
       background-color: black;
@@ -46,6 +47,7 @@
 
     .ccType {
       margin-top: 30px;
+      opacity: 0.6;
     }
 
     .visa {

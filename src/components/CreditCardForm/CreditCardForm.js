@@ -73,6 +73,7 @@ class CreditCardForm extends Component {
                 <label className="">CVV</label>
                 <input
                   onChange={this.props.onCvvChange}
+                  onClick={this.props.flip}
                   type="number"
                   name="cvv"
                 ></input>

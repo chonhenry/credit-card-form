@@ -19,6 +19,7 @@ class App extends Component {
     month: "",
     name: "",
     type: "",
+    side: "front",
   };
 
   onCvvChange = (e) => {
@@ -108,6 +109,10 @@ class App extends Component {
     this.setState({ name: e.target.value });
   };
 
+  flip = () => {
+    
+  };
+
   render() {
     return (
       <div className="App">
@@ -118,6 +123,7 @@ class App extends Component {
           onMonthChange={this.onMonthChange}
           onNameChange={this.onNameChange}
           numDigit={this.state.type === "amex" ? 15 : 16}
+          flip={this.flip}
         ></CreditCardForm>
         <CreditCard
           year={this.state.year}
