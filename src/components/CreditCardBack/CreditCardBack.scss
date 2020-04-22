@@ -50,7 +50,13 @@
       height: 50px;
       border-radius: 4px;
       margin: 50px auto 0 auto;
-      color: black;
+      display: flex;
+      align-items: center;
+
+      .cvvNum {
+        color: black;
+        margin-left: 405px;
+      }
     }
 
     .ccType {

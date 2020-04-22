@@ -14,6 +14,7 @@ class CreditCardForm extends Component {
                 <input
                   onChange={this.props.onCreditCardNumChange}
                   onClick={this.props.onFormClick}
+                  onFocus={this.props.onFormClick}
                   type="text"
                   maxLength={this.props.numDigit}
                   name="ccNumber"
@@ -27,6 +28,7 @@ class CreditCardForm extends Component {
                 <input
                   onChange={this.props.onNameChange}
                   onClick={this.props.onFormClick}
+                  onFocus={this.props.onFormClick}
                   type="text"
                   name="holderName"
                 />
@@ -43,6 +45,7 @@ class CreditCardForm extends Component {
                       name="card[expire-month]"
                       onChange={this.props.onMonthChange}
                       onClick={this.props.onFormClick}
+                      onFocus={this.props.onFormClick}
                     >
                       <option value="" disabled>
                         Month
@@ -65,6 +68,7 @@ class CreditCardForm extends Component {
                     <input
                       onChange={this.props.onYearChange}
                       onClick={this.props.onFormClick}
+                      onFocus={this.props.onFormClick}
                       type="number"
                       name="card[expire-year]"
                       maxLength="4"
@@ -78,7 +82,9 @@ class CreditCardForm extends Component {
                 <input
                   onChange={this.props.onCvvChange}
                   onClick={this.props.onCvvClick}
-                  type="number"
+                  onFocus={this.props.onCvvClick}
+                  maxLength={this.props.cvvDigit}
+                  type="text"
                   name="cvv"
                 ></input>
               </div>

@@ -23,10 +23,15 @@ class App extends Component {
   };
 
   onCvvChange = (e) => {
-    if (e.target.value.length <= 3) {
+    if (e.target.value.slice(-1) >= "0" && e.target.value.slice(-1) <= "9") {
       this.setState({ cvv: e.target.value });
     } else {
-      e.target.value = this.state.cvv;
+      if (e.target.value === "") {
+        e.target.value = "";
+        this.setState({ cvv: "" });
+      } else {
+        e.target.value = this.state.cvv;
+      }
     }
   };
 
@@ -110,15 +115,11 @@ class App extends Component {
   };
 
   onCvvClick = () => {
-    this.setState({ side: "back" }, () => {
-      console.log(this.state.side);
-    });
+    this.setState({ side: "back" });
   };
 
   onFormClick = () => {
-    this.setState({ side: "front" }, () => {
-      console.log(this.state.side);
-    });
+    this.setState({ side: "front" });
   };
 
   render() {
@@ -131,6 +132,7 @@ class App extends Component {
           onMonthChange={this.onMonthChange}
           onNameChange={this.onNameChange}
           numDigit={this.state.type === "amex" ? 15 : 16}
+          cvvDigit={this.state.type === "amex" ? 4 : 3}
           onCvvClick={this.state.side === "front" ? this.onCvvClick : null}
           onFormClick={this.state.side === "back" ? this.onFormClick : null}
         ></CreditCardForm>
@@ -145,6 +147,7 @@ class App extends Component {
         <CreditCardBack
           type={this.state.type}
           side={this.state.side}
+          cvv={this.state.cvv}
         ></CreditCardBack>
       </div>
     );
